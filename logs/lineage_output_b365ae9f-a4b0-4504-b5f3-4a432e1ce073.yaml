@@ -1,0 +1,28 @@
+job:
+  name: semi_structured_etl_job
+  namespace: etl_namespace
+inputs:
+- name: 'local file: C:\Users\jeevi\Downloads\iris-parquet.json'
+  namespace: source
+  facets:
+    schema:
+      fields:
+        sepal.length: float
+        sepal.width: float
+        petal.length: float
+        petal.width: float
+        variety: str
+outputs:
+- name: mysql.database.table
+  namespace: mysql
+run:
+  runId: b365ae9f-a4b0-4504-b5f3-4a432e1ce073
+  facets:
+    source:
+      source: 'local file: C:\Users\jeevi\Downloads\iris-parquet.json'
+      type: JSON
+      timestamp: '2025-06-19 10:56:52.238482'
+    transformations:
+    - "sepal.length \u2192 int"
+    user: ETL_JOB_USER
+    runTime: '2025-06-19 10:57:13.351267'

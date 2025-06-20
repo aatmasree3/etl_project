@@ -1,0 +1,31 @@
+job:
+  name: structured_etl_job
+  namespace: etl_namespace
+inputs:
+- name: 'local file: /Users/aatmasree/PycharmProjects/test/weather_data.csv'
+  namespace: source
+  facets:
+    schema:
+      fields:
+        date: Series
+        city: Series
+        temperature: Series
+        humidity: Series
+        precipitation: Series
+        wind_speed: Series
+        pressure: Series
+        condition: Series
+outputs:
+- name: mysql.database.table
+  namespace: mysql
+run:
+  runId: c3ca01ac-df41-4ce4-89ed-22d849507325
+  facets:
+    source:
+      source: 'local file: /Users/aatmasree/PycharmProjects/test/weather_data.csv'
+      type: CSV
+      timestamp: '2025-06-20 13:53:46.141209'
+    transformations:
+    - remove duplicate rows
+    user: ETL_JOB_USER
+    runTime: '2025-06-20 13:53:55.413168'

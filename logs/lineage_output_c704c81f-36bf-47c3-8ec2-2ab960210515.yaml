@@ -1,0 +1,36 @@
+job:
+  name: semi_structured_etl_job
+  namespace: etl_namespace
+inputs:
+- name: 'local file: /Users/aatmasree/Downloads/titanic-parquet.json'
+  namespace: source
+  facets:
+    schema:
+      fields:
+        PassengerId: str
+        Survived: str
+        Pclass: str
+        Name: str
+        Sex: str
+        Age: int
+        SibSp: str
+        Parch: str
+        Ticket: str
+        Fare: float
+        Cabin: NoneType
+        Embarked: str
+outputs:
+- name: mysql.database.table
+  namespace: mysql
+run:
+  runId: c704c81f-36bf-47c3-8ec2-2ab960210515
+  facets:
+    source:
+      source: 'local file: /Users/aatmasree/Downloads/titanic-parquet.json'
+      type: JSON
+      timestamp: '2025-06-20 12:24:00.039288'
+    transformations:
+    - drop missing/blank/null rows
+    - "Name \u2192 Jeevika"
+    user: ETL_JOB_USER
+    runTime: '2025-06-20 12:36:11.422325'

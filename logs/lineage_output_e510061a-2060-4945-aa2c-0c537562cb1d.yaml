@@ -1,0 +1,31 @@
+job:
+  name: structured_etl_job
+  namespace: etl_namespace
+inputs:
+- name: 'local file: /Users/aatmasree/PycharmProjects/test/weather_data.csv'
+  namespace: source
+  facets:
+    schema:
+      fields:
+        date: Series
+        city: Series
+        temperature: Series
+        humidity: Series
+        precipitation: Series
+        wind_speed: Series
+        pressure: Series
+        condition: Series
+outputs:
+- name: mysql.database.table
+  namespace: mysql
+run:
+  runId: e510061a-2060-4945-aa2c-0c537562cb1d
+  facets:
+    source:
+      source: 'local file: /Users/aatmasree/PycharmProjects/test/weather_data.csv'
+      type: CSV
+      timestamp: '2025-06-20 13:42:35.897744'
+    transformations:
+    - drop missing/blank/null rows
+    user: ETL_JOB_USER
+    runTime: '2025-06-20 13:42:49.329898'
